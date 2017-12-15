@@ -20,6 +20,7 @@ install {
 		pom.whenConfigured { pom ->
 			pom.packaging = isAndroidLibrary ? 'aar' : isAndroidApplication ? 'apk' : 'jar'
 			pom.dependencies.removeAll { dep -> dep.artifactId in publishs.removeDependecies }
+			pom.dependencies.removeAll { dep -> dep.scope.contains('test') }
 		}
 
 		pom.project {
