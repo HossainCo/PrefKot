@@ -67,7 +67,7 @@ afterEvaluate { project ->
 //						pom.dependencies = pom.dependencies.findAll { dep ->
 //							dep.artifactId.notIn(publishs.removeDependecies)
 //						}
-					pom.dependencies.each { dep -> throw new Exception(dep.artifactId) }
+					//pom.dependencies.each { dep -> throw new Exception(dep.artifactId) }
 					pom.dependencies.removeAll { dep -> dep.artifactId in publishs.removeDependecies }
 				}
 
