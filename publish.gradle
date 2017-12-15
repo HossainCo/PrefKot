@@ -1,0 +1,49 @@
+project.ext.publishs = [
+	group            : 'ir.hossainco',
+	artifact         : 'prefkot',
+	name             : 'PrefKot',
+	version          : '1.0.0-alpha1',
+	des              : 'Simplify usage of Android Shared Prefrences in Kotlin :)',
+	url              : 'https://hossainco.github.io/PrefKot/',
+
+
+	jar              : [
+		prefix : '',
+		postfix: '',
+	],
+
+	bintray          : [
+		repo: 'maven',
+		org : 'hossainco',
+		name: 'PrefKot',
+	],
+
+	scm              : [
+		url                : 'https://hossainco.github.io/PrefKot/',
+		connection         : 'https://github.com/HossainCo/PrefKot.git',
+		developerConnection: 'https://github.com/HossainCo/PrefKot.git',
+	],
+
+	developers       : [
+		[
+			id   : 'hossainco',
+			name : 'HossainCo',
+			email: 'hco@post.com',
+		],
+	],
+
+	licenses         : [
+		[
+			name        : 'MIT License',
+			url         : 'https://opensource.org/licenses/MIT',
+			distribution: 'repo',
+			list        : [
+				'MIT',
+			],
+		],
+	],
+
+	removeDependecies: [
+		'support-fragment',
+	]
+]

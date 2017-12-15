@@ -1,0 +1,4 @@
+rootProject.name = 'testPrefKot'
+
+include 'libPrefKot'
+project(':libPrefKot').projectDir = file('../')

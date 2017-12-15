@@ -1,0 +1,49 @@
+def versions = rootProject.ext.versions = [:]
+versions.build_gradle = '3.1.0-alpha04'
+versions.compatibility =[:]
+versions.compatibility.target = JavaVersion.VERSION_1_8
+versions.compatibility.source = JavaVersion.VERSION_1_8
+versions.compatibility.kotlin = JavaVersion.VERSION_1_8
+
+versions.compile_sdk = 27
+versions.build_tools = '27.0.1'
+versions.min_sdk = 14
+versions.target_sdk = 26
+
+versions.junit = '4.12'
+versions.dagger = '2.x'
+
+def support = versions.support = [:]
+support.version = versions.build_tools // '27.0.1' // '26.1.0'
+support.constraint_layout = '1.0.2'
+support.test = [:]
+support.test.runner = '1.0.1'
+support.test.espresso_core = '3.0.1'
+
+def arch = versions.arch = [:]
+arch.version = '1.0.0'
+arch.lifecycle = [:]
+arch.lifecycle.runtime = '1.0.3'
+arch.lifecycle.compiler = arch.version
+arch.lifecycle.common_java8 = arch.version
+arch.lifecycle.extensions = arch.version
+arch.lifecycle.reactivestreams = arch.version
+arch.room = arch.version
+arch.paging = '1.0.0-alpha3'
+
+def kotlin = versions.kotlin = [:]
+kotlin.version = '1.2.0' //'1.1.51'
+kotlin.anko = '0.10.3'
+kotlin.coroutines = kotlin.version
+
+def rx2 = versions.rx2 = [:]
+rx2.java = '2.1.7'
+rx2.android = '2.0.1'
+rx2.kotlin = '2.1.0'
+rx2.binding = '2.0.0'
+rx2.reactivenetwork = '0.12.2'
+rx2.downloader = '0.3'
+rx2.databinding = '2.0.0'
+
+def xzing = versions.xzing = [:]
+xzing.core = '3.3.1'

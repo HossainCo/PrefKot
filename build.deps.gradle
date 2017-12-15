@@ -1,0 +1,23 @@
+apply from: 'build.versions.gradle'
+
+rootProject.ext.deps = [
+	build_gradle: "com.android.tools.build:gradle:${versions.build_gradle}",
+	junit       : "junit:junit:${versions.junit}",
+
+	bintray     : [
+		gradle_plugin: "com.jfrog.bintray.gradle:gradle-bintray-plugin:${versions.bintray.version}",
+	],
+
+	kotlin      : [
+		gradle_plugin: "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin.version}",
+		stdlib       : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin.version}",
+	],
+
+	support     : [
+		fragment: "com.android.support:support-fragment:${versions.support.version}",
+		test    : [
+			runner       : "com.android.support.test:runner:${versions.support.test.runner}",
+			espresso_core: "com.android.support.test.espresso:espresso-core:${versions.support.test.espresso_core}",
+		],
+	],
+]

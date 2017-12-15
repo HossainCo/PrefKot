@@ -1,0 +1,71 @@
+buildscript {
+	apply from: 'build.deps.gradle'
+	apply from: 'publish.gradle'
+
+	ext {
+		travisBuild = System.getenv("TRAVIS") == "true"
+		// allows for -Dpre-dex=false to be set
+		preDexEnabled = "true".equals(System.getProperty("pre-dex", "true"))
+	}
+
+	repositories {
+		jcenter()
+		google()
+	}
+	dependencies {
+		classpath deps.bintray.gradle_plugin
+		classpath deps.kotlin.gradle_plugin
+		classpath deps.build_gradle
+	}
+
+}
+
+allprojects {
+	repositories {
+		jcenter()
+		google()
+	}
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+	compileSdkVersion versions.compile_sdk
+	buildToolsVersion versions.build_tools
+
+	sourceSets.each { it.java.srcDirs += "src/${it.name}/kotlin" }
+
+	defaultConfig {
+		minSdkVersion versions.min_sdk
+		targetSdkVersion versions.target_sdk
+		version publishs.version
+	}
+
+	dexOptions {
+		// Skip pre-dexing when running on Travis CI or when disabled via -Dpre-dex=false.
+		preDexLibraries = preDexEnabled && !travisBuild
+	}
+
+	buildTypes {
+		debug {
+			testCoverageEnabled true
+		}
+	}
+}
+
+dependencies {
+	testImplementation deps.junit
+	androidTestImplementation deps.support.test.runner
+	androidTestImplementation deps.support.test.espresso_core
+
+	implementation deps.kotlin.stdlib
+	implementation deps.support.fragment
+}
+
+apply from: 'publish.maven.gradle'
+//apply from: 'https://raw.githubusercontent.com/HossainCo/gists/master/publish.maven.gradle'
+
+apply from: 'publish.bintray.gradle'
+//apply from: 'https://raw.githubusercontent.com/HossainCo/gists/master/publish.bintray.gradle'

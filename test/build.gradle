@@ -1,0 +1,72 @@
+buildscript {
+	apply from: 'build.deps.gradle'
+
+	repositories {
+		google()
+		jcenter()
+	}
+	dependencies {
+		classpath deps.build_gradle
+		classpath deps.kotlin.gradle_plugin
+	}
+}
+
+allprojects {
+	repositories {
+		google()
+		jcenter()
+	}
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+	compileSdkVersion versions.compile_sdk
+	buildToolsVersion versions.build_tools
+	defaultConfig {
+		applicationId 'ir.hossainco.prefkot.test'
+		minSdkVersion versions.min_sdk
+		targetSdkVersion versions.target_sdk
+		testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+
+		versionCode 1
+		versionName '1.0'
+
+		vectorDrawables.useSupportLibrary = true
+		resConfigs 'en', 'fa'
+	}
+
+	//dataBinding {
+	//	enabled = true
+	//}
+
+	sourceSets.each { it.java.srcDirs += "src/${it.name}/kotlin" }
+
+	buildTypes {
+		release {
+			postprocessing {
+				removeUnusedCode true
+				removeUnusedResources true
+				obfuscate true
+				optimizeCode true
+				proguardFile 'proguard-rules.pro'
+			}
+		}
+	}
+
+	compileOptions {
+		sourceCompatibility versions.compatibility.source
+		targetCompatibility versions.compatibility.target
+	}
+}
+
+dependencies {
+	testImplementation deps.junit
+
+	implementation project(':libPrefKot')
+
+	implementation deps.kotlin.stdlib
+	implementation deps.kotlin.anko.dep
+}
