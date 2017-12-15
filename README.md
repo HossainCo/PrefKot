@@ -5,6 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/HossainCo/PrefKot/badge.svg?branch=master)](https://coveralls.io/github/HossainCo/PrefKot?branch=master)
 
 [![Github All Releases](https://img.shields.io/github/downloads/hossainco/PrefKot/total.svg?style=flat-square)]()
+[ ![Download](https://api.bintray.com/packages/hossainco/maven/PrefKot/images/download.svg) ](https://bintray.com/hossainco/maven/PrefKot/_latestVersion)
 
 Simplify usage of Android SharedPreferences in Kotlin by Delegates :)
 
