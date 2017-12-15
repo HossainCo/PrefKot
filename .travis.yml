@@ -34,7 +34,7 @@ cache:
     - $HOME/.gradle
 
 before_install:
-  - chmod +x ./sdkmanager-accept-licenses.sh
+  #- chmod +x ./sdkmanager-accept-licenses.sh
   - chmod +x ./gradlew
   - echo y | $ANDROID_HOME/tools/bin/sdkmanager --update
   - echo y | $ANDROID_HOME/tools/bin/sdkmanager --licenses
