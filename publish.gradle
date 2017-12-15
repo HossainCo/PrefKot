@@ -20,8 +20,8 @@ project.ext.publishs = [
 
 	scm              : [
 		url                : 'https://hossainco.github.io/PrefKot/',
-		connection         : 'https://github.com/HossainCo/PrefKot.git',
-		developerConnection: 'https://github.com/HossainCo/PrefKot.git',
+		connection         : 'scm:git:https://github.com/HossainCo/PrefKot.git',
+		developerConnection: 'scm:git:ssh:git@github.com:HossainCo/PrefKot.git',
 	],
 
 	developers       : [
