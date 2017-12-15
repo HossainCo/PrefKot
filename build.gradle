@@ -65,8 +65,8 @@ dependencies {
 	implementation deps.support.fragment
 }
 
-apply from: 'publish.maven.gradle'
-//apply from: 'https://raw.githubusercontent.com/HossainCo/gists/master/publish.maven.gradle'
+//apply from: 'publish.maven.gradle'
+apply from: 'https://raw.githubusercontent.com/HossainCo/gists/master/publish.maven.gradle'
 
-apply from: 'publish.bintray.gradle'
-//apply from: 'https://raw.githubusercontent.com/HossainCo/gists/master/publish.bintray.gradle'
+//apply from: 'publish.bintray.gradle'
+apply from: 'https://raw.githubusercontent.com/HossainCo/gists/master/publish.bintray.gradle'

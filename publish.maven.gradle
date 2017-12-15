@@ -66,13 +66,10 @@ install {
 					}
 				}
 			}
-//			pom.withXml {
-//				asNode().appendNode('description',publishs.des)
-//			}
 		}
 	}
-	//logger.info("Published artifacts in ${configurations.archives}:")
-	//configurations.archives.artifacts.files.files.each { logger.info("\t$it") }
+	logger.info("Published artifacts in ${configurations.archives}:")
+	configurations.archives.artifacts.files.files.each { logger.info("\t$it") }
 }
 
 afterEvaluate { project ->
@@ -154,11 +151,6 @@ afterEvaluate { project ->
 			classifier = 'sources'
 			from sourceSets.main.allSource
 		}
-
-//	task javadoc(type: Javadoc) {
-//		source = android.sourceSets.main.java.srcDirs
-//		classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-//	}
 
 		task javadocsJar(type: Jar, dependsOn: javadoc) {
 			classifier = 'javadoc'
