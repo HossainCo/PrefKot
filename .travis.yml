@@ -6,11 +6,9 @@ jdk:
 
 android:
   components:
-    - tools
-    - tools
-    - platform-tools
-    - build-tools-27.0.2
     - android-27
+    - build-tools-27.0.2
+    - platform-tools
     - add-on
     - extra
 
@@ -42,11 +40,10 @@ before_install:
 #  - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
 #  - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
 #  #- chmod +x ./sdkmanager-accept-licenses.sh
-#  - chmod +x ./gradlew
 #  - echo y | $ANDROID_HOME/tools/bin/sdkmanager --update
 #  - echo y | $ANDROID_HOME/tools/bin/sdkmanager --licenses
-#  #- ./sdkmanager-accept-licenses.sh
   - yes | sdkmanager "platforms;android-27"
+  - chmod +x ./gradlew
 
 script:
   - ./gradlew --no-daemon build
