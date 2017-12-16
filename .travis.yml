@@ -1,8 +1,6 @@
 sudo: false
 language: android
 
-after_failure: "cat $TRAVIS_BUILD_DIR/lint-results-debug.xml"
-
 jdk:
   - oraclejdk8
 
@@ -42,3 +40,9 @@ before_install:
 
 script:
   - ./gradlew build
+
+after_failure:
+  - cat $TRAVIS_BUILD_DIR/lint-results-debug.xml
+
+after_success:
+  - ./gradlew test jacocoTestReport coveralls
