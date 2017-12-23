@@ -1,5 +1,9 @@
 # Android PrefKot Library
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+ 
+[![pipeline status](https://gitlab.com/HossainCo/PrefKot/badges/master/pipeline.svg)](https://gitlab.com/HossainCo/PrefKot/commits/master)
+[![coverage report](https://gitlab.com/HossainCo/PrefKot/badges/master/coverage.svg)](https://gitlab.com/HossainCo/PrefKot/commits/master)
+ 
 [![Build Status](https://travis-ci.org/HossainCo/PrefKot.svg?branch=master)](https://travis-ci.org/HossainCo/PrefKot)
 [![Coverage Status](https://coveralls.io/repos/github/HossainCo/PrefKot/badge.svg?branch=master)](https://coveralls.io/github/HossainCo/PrefKot?branch=master)
 
@@ -47,7 +51,7 @@ allprojects {
  
 // in project
 dependencies {
-	compile 'com.github.hossainco:prefkot:1.0.0-alpha1'
+	compile 'com.github.hossainco:prefkot:1.0.0-alpha2'
 	// ...
 }
 ```

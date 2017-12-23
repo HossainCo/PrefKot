@@ -1,11 +1,11 @@
 buildscript {
-	apply from: 'build.deps.gradle'
+	apply from: 'https://raw.githubusercontent.com/HossainCo/gists/master/deps.gradle'
 	apply from: 'publish.gradle'
 
 	ext {
-		travisBuild = System.getenv("TRAVIS") == "true"
+		ciBuild = System.getenv("TRAVIS") == "true"
 		// allows for -Dpre-dex=false to be set
-		preDexEnabled = "true".equals(System.getProperty("pre-dex", "true"))
+		preDexEnabled = "true" == System.getProperty("pre-dex", "true")
 	}
 
 	repositories {
@@ -13,16 +13,16 @@ buildscript {
 		google()
 	}
 	dependencies {
-		classpath deps.bintray.gradle_plugin
-		classpath deps.kotlin.gradle_plugin
-		classpath deps.build_gradle
-		classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
+		deps.build_gradle()
+		deps.android_maven()
+		deps.kotlin.gradle_plugin()
+		deps.bintray.gradle_plugin()
 	}
-
 }
 
 allprojects {
 	repositories {
+		maven { url 'https://jitpack.io' }
 		jcenter()
 		google()
 	}
@@ -33,40 +33,33 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-	compileSdkVersion versions.compile_sdk
-	buildToolsVersion versions.build_tools
+	compileSdkVersion depsVersion.compile_sdk
+	buildToolsVersion depsVersion.build_tools
 
 	sourceSets.each { it.java.srcDirs += "src/${it.name}/kotlin" }
 
 	defaultConfig {
-		minSdkVersion versions.min_sdk
-		targetSdkVersion versions.target_sdk
+		minSdkVersion depsVersion.min_sdk
+		targetSdkVersion depsVersion.target_sdk
 		version publishs.version
 	}
 
 	dexOptions {
 		// Skip pre-dexing when running on Travis CI or when disabled via -Dpre-dex=false.
-		preDexLibraries = preDexEnabled && !travisBuild
-	}
-
-	buildTypes {
-		debug {
-			testCoverageEnabled true
-		}
+		preDexLibraries = preDexEnabled && !ciBuild
 	}
 }
 
 dependencies {
-	testImplementation deps.junit
-	androidTestImplementation deps.support.test.runner
-	androidTestImplementation deps.support.test.espresso_core
+	 deps.junit 'test'
+	 deps.support.test.runner 'androidTest'
+	 deps.support.test.espresso.core 'androidTest'
 
-	implementation deps.kotlin.stdlib
-	implementation deps.support.fragment
+	 deps.kotlin.stdlib()
+	 deps.support.fragment()
+	 deps.hossainco.commonkotlin()
 }
 
-//apply from: 'publish.maven.gradle'
 apply from: 'https://raw.githubusercontent.com/HossainCo/gists/master/publish.maven.gradle'
-
-//apply from: 'publish.bintray.gradle'
 apply from: 'https://raw.githubusercontent.com/HossainCo/gists/master/publish.bintray.gradle'
+apply from: 'https://raw.githubusercontent.com/HossainCo/gists/master/jacoco.gradle'

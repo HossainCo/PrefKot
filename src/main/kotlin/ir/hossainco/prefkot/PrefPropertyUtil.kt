@@ -7,17 +7,10 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import android.support.v4.app.Fragment
 import android.view.View
+import ir.hossainco.commonkotlin.Provider
+import ir.hossainco.commonkotlin.toProviderOrNull
 import kotlin.reflect.KClass
 
-typealias Provider<T> = () -> T
-
-inline fun <T> tri(block: () -> T) = try {
-	block()
-} catch (e: Throwable) {
-	null
-}
-
-fun <T> T?.toFun(): Provider<T>? = if (this != null) ({ this }) else null
 fun Context.getDefaultSharedPreferences() = PreferenceManager.getDefaultSharedPreferences(this)!!
 
 object PrefKot {
@@ -46,14 +39,14 @@ inline fun <reified T : Any> android.app.Fragment.pref(key: String? = null, cach
 
 
 inline fun <reified T : Any> Context.pref(key: String? = null, cache: Boolean = true, default: T? = null)
-	= pref(this::getDefaultSharedPreferences, key, cache, default.toFun())
+	= pref(this::getDefaultSharedPreferences, key, cache, default.toProviderOrNull())
 
 inline fun <reified T : Any> Context.pref(key: String? = null, cache: Boolean = true, noinline default: Provider<T>?)
 	= pref(this::getDefaultSharedPreferences, key, cache, default)
 
 
 inline fun <reified T : Any> pref(noinline pref: Provider<SharedPreferences>? = null, key: String? = null, cache: Boolean = true, default: T? = null)
-	= pref(T::class, pref, key, cache, default.toFun())
+	= pref(T::class, pref, key, cache, default.toProviderOrNull())
 
 inline fun <reified T : Any> pref(noinline pref: Provider<SharedPreferences>? = null, key: String? = null, cache: Boolean = true, noinline default: Provider<T>?)
 	= pref(T::class, pref, key, cache, default)
