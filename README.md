@@ -51,7 +51,7 @@ allprojects {
  
 // in project
 dependencies {
-	compile 'com.github.hossainco:prefkot:1.0.0-alpha2'
+	compile 'com.github.hossainco:prefkot:0.1.3'
 	// ...
 }
 ```

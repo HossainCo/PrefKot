@@ -7,8 +7,8 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import android.support.v4.app.Fragment
 import android.view.View
-import ir.hossainco.commonkotlin.Provider
-import ir.hossainco.commonkotlin.toProviderOrNull
+import ir.hossainco.commonkotlin.provider.Provider
+import ir.hossainco.commonkotlin.provider.toProviderOrNull
 import kotlin.reflect.KClass
 
 fun Context.getDefaultSharedPreferences() = PreferenceManager.getDefaultSharedPreferences(this)!!

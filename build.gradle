@@ -62,4 +62,4 @@ dependencies {
 
 apply from: 'https://raw.githubusercontent.com/HossainCo/gists/master/publish.maven.gradle'
 apply from: 'https://raw.githubusercontent.com/HossainCo/gists/master/publish.bintray.gradle'
-apply from: 'https://raw.githubusercontent.com/HossainCo/gists/master/jacoco.gradle'
+//apply from: 'https://raw.githubusercontent.com/HossainCo/gists/master/jacoco.gradle'

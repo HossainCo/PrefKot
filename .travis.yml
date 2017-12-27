@@ -9,7 +9,7 @@ jdk:
 android:
   components:
     - platform-tools
-    - build-tools-27.0.2
+    - build-tools-27.0.3
     - android-27
     #- tools # to get the new `repository-11.xml`
     #- tools # see https://github.com/travis-ci/travis-ci/issues/6040#issuecomment-219367943)
@@ -34,11 +34,11 @@ cache:
     - $HOME/.gradle
 
 before_install:
+  - chmod +x ./sdkmanager-accept-licenses.sh
   - chmod +x ./gradlew
   - echo y | $ANDROID_HOME/tools/bin/sdkmanager --update
   - echo y | $ANDROID_HOME/tools/bin/sdkmanager --licenses
+  #- ./sdkmanager-accept-licenses.sh
 
 script:
   - ./gradlew build
-  - ./gradlew assemble
-  - ./gradlew install

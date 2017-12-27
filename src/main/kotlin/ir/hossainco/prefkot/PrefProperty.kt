@@ -3,8 +3,8 @@
 package ir.hossainco.prefkot
 
 import android.content.SharedPreferences
-import ir.hossainco.commonkotlin.Provider
-import ir.hossainco.commonkotlin.tri
+import ir.hossainco.commonkotlin.provider.Provider
+import ir.hossainco.commonkotlin.provider.tri
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.properties.ReadWriteProperty

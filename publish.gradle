@@ -2,7 +2,7 @@ project.ext.publishs = [
 	group            : 'ir.hossainco',
 	artifact         : 'prefkot',
 	name             : 'PrefKot',
-	version          : '1.0.0-alpha2',
+	version          : '0.1.3',
 	des              : 'Simplify usage of Android Shared Prefrences in Kotlin :)',
 	url              : 'https://hossainco.github.io/PrefKot/',
 
